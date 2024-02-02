@@ -1,2 +1,3 @@
 # weather-app
-find weather
+
+Using OpenWeatherAPI search and favorite weather to your account
