@@ -1,0 +1,27 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "Search Weather",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build",
+    "postinstall": "npm run build",
+    "prettier-check": "prettier --check .",
+    "prettier-write": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "Cole Sutrick",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.4.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.4",
+    "prettier-plugin-tailwindcss": "^0.5.11"
+  }
+}
