@@ -1,0 +1,34 @@
+# dependencies
+/node_modules
+/server/node_modules
+/client/node_modules
+/.pnp
+.pnp.js
+
+# React specific
+**/*.log
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/public/*.html
+/src/**/*.test.js
+/src/**/*.test.jsx
+
+# testing
+/coverage
+
+# production
+/client/build
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Server and client specific environment variables
+/server/.env
+/client/.env
