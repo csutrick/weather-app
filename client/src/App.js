@@ -11,6 +11,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/index.js";
 import Footer from "./components/Footer/index.js";
 import Home from "./pages/Home.js";
+import Login from "./pages/Login.js";
+import Signup from "./pages/Signup.js";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -39,6 +41,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
         <Footer />
       </Router>
