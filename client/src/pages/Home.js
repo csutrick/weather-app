@@ -1,9 +1,15 @@
 import React from "react";
 
+import Sidebar from "../components/PageSearch/sidebar";
+import SearchResults from "../components/PageSearch/searchResults";
+
 const Home = () => {
   return (
-    <section className="mt-16 flex h-screen items-center justify-center bg-blue-300">
-      <h2 className="text-6xl font-bold text-white">Home Page</h2>
+    <section className="mt-16 flex h-screen flex-row flex-nowrap">
+      {/* user searches terms from here */}
+      <Sidebar />
+      {/* user views results, adds favorites */}
+      <SearchResults />
     </section>
   );
 };
