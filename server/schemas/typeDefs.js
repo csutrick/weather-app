@@ -1,12 +1,20 @@
 const { gql } = require("apollo-server-express");
+const GraphQLJSON = require("graphql-type-json");
 
 const typeDefs = gql`
+  scalar JSON
+
   type Profile {
     _id: ID
     name: String
     email: String
     password: String
     favorites: [String]!
+  }
+
+  type Weather {
+    city: String
+    forecast: JSON
   }
 
   type Auth {
@@ -19,6 +27,8 @@ const typeDefs = gql`
     profile(profileId: ID!): Profile
 
     me: Profile
+
+    getWeatherForecast(city: String!): Weather
   }
 
   type Mutation {

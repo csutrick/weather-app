@@ -1,6 +1,7 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { Profile } = require("../models");
 const { signToken } = require("../utils/auth");
+const axios = require("axios");
 
 const resolvers = {
   Query: {
@@ -17,6 +18,32 @@ const resolvers = {
         return Profile.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("You need to be logged in!");
+    },
+
+    // Gets the weather for the city passed in
+    getWeatherForecast: async (_, { city }) => {
+      try {
+        const response = await axios.get(
+          `https://api.openweathermap.org/data/2.5/forecast`,
+          {
+            params: {
+              q: city,
+              appid: process.env.WEATHER_API_KEY,
+              units: "imperial",
+            },
+          },
+        );
+
+        const weatherData = response.data;
+
+        return {
+          city: city,
+          forecast: weatherData,
+        };
+      } catch (error) {
+        console.error(error);
+        throw new Error("Failed to fetch weather data");
+      }
     },
   },
 

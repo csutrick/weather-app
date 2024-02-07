@@ -29,3 +29,12 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_WEATHER_FORECAST = gql`
+  query getWeatherForecast($city: String!) {
+    getWeatherForecast(city: $city) {
+      city
+      forecast
+    }
+  }
+`;
