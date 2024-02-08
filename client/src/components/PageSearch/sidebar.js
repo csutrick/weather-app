@@ -7,6 +7,7 @@ import Input from "./input";
 import SearchHistory from "./searchHistory";
 
 const Sidebar = ({ setSearchResults }) => {
+  const [searchTerm, setSearchTerm] = useState("");
   const [searchHistory, setSearchHistory] = useState(() => {
     const savedSearches = localStorage.getItem("searchHistory");
     return savedSearches ? JSON.parse(savedSearches) : [];
@@ -20,10 +21,15 @@ const Sidebar = ({ setSearchResults }) => {
         setSearchResults(data.getWeatherForecast);
 
         if (data.getWeatherForecast && data.getWeatherForecast.city) {
-          setSearchHistory((prevHistory) => [
-            data.getWeatherForecast.city,
-            ...prevHistory,
-          ]);
+          setSearchHistory((prevHistory) => {
+            const city = data.getWeatherForecast.city;
+            const cityIndex = prevHistory.indexOf(city);
+
+            if (cityIndex !== -1) {
+              prevHistory.splice(cityIndex, 1);
+            }
+            return [city, ...prevHistory];
+          });
         }
       },
       onError: (error) => {
@@ -41,9 +47,18 @@ const Sidebar = ({ setSearchResults }) => {
   return (
     <div className="w-1/4 bg-green-300 p-4">
       {/* User input */}
-      <Input handleSearch={handleSearch} />
+      <Input
+        handleSearch={handleSearch}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
       {/* User search history */}
-      <SearchHistory searchHistory={searchHistory} />
+      <SearchHistory
+        handleSearch={handleSearch}
+        searchHistory={searchHistory}
+        setSearchHistory={setSearchHistory}
+        setSearchTerm={setSearchTerm}
+      />
     </div>
   );
 };

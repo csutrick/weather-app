@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { MdSearch } from "react-icons/md";
 
-const Input = ({ handleSearch }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-
+const Input = ({ handleSearch, searchTerm, setSearchTerm }) => {
   return (
     <div className="mb-4 flex h-14 w-full flex-row flex-nowrap">
       <input
