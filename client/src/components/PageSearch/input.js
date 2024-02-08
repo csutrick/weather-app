@@ -4,7 +4,7 @@ import { MdSearch } from "react-icons/md";
 
 const Input = ({ handleSearch, searchTerm, setSearchTerm }) => {
   return (
-    <div className="mb-4 flex h-14 w-full flex-row flex-nowrap">
+    <div className="mb-1 flex h-14 w-full flex-row flex-nowrap">
       <input
         placeholder="Search Cities..."
         name="user input"
