@@ -1,5 +1,0 @@
-      {searchResults && searchResults.city ? (
-        <p>{searchResults.city} weather found</p>
-      ) : (
-        <p>Search something</p>
-      )}
