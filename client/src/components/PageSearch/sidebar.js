@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useLazyQuery } from "@apollo/client";
 import { QUERY_WEATHER_FORECAST } from "../../utils/queries";
 
+import Auth from "../../utils/auth.js";
+
 import Input from "./input";
 import SearchHistory from "./searchHistory";
 
@@ -10,7 +12,7 @@ const Sidebar = ({ setSearchResults }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
   const [messageType, setMessageType] = useState("normal");
-  
+
   const [searchHistory, setSearchHistory] = useState(() => {
     const savedSearches = localStorage.getItem("searchHistory");
     return savedSearches ? JSON.parse(savedSearches) : [];
@@ -46,11 +48,16 @@ const Sidebar = ({ setSearchResults }) => {
   );
 
   const handleSearch = async (searchTerm) => {
-    console.log("Searching weather for:", searchTerm);
-    setStatusMessage("Loading...");
-    setMessageType("normal");
+    if (Auth.loggedIn()) {
+      console.log("Searching weather for:", searchTerm);
+      setStatusMessage("Loading...");
+      setMessageType("normal");
 
-    getWeatherForecast({ variables: { city: searchTerm } });
+      getWeatherForecast({ variables: { city: searchTerm } });
+    } else {
+      console.log("User not logged in");
+      setStatusMessage("Not logged in");
+    }
   };
 
   return (
