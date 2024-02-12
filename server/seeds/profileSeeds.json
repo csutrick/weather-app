@@ -3,12 +3,12 @@
     "name": "John Doe",
     "email": "JohnD123@weatherapp.dev",
     "password": "password01",
-    "favorites": ["Miami", "Dallas", "Phoenix"]
+    "favorites": ["miami", "dallas", "phoenix"]
   },
   {
     "name": "Jane Doe",
     "email": "DoeJane@weatherapp.dev",
     "password": "password01",
-    "favorites": ["Chicago", "Philadelphia", "Houston"]
+    "favorites": ["chicago", "philadelphia", "houston"]
   }
 ]
