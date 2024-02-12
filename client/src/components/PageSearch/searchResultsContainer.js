@@ -3,13 +3,20 @@ import { Link } from "react-router-dom";
 
 import Auth from "../../utils/auth";
 
-const SearchResultsContainer = ({ searchResults }) => {
+import FavoriteIcon from "./favoriteIcon";
+
+const SearchResultsContainer = ({
+  searchResults,
+  favorites,
+  setFavorites,
+  profileId,
+}) => {
   useEffect(() => {
     console.log("New search results, updating page");
   }, [searchResults]);
 
   return (
-    <div className="flex flex-grow flex-col items-center justify-center bg-blue-300">
+    <div className="relative flex flex-grow flex-col items-center justify-center bg-blue-300">
       {searchResults && searchResults.city ? (
         <>
           <h2 className="border-b-4 border-black bg-red-300 px-8 text-5xl font-bold uppercase tracking-wider text-black">
@@ -28,6 +35,12 @@ const SearchResultsContainer = ({ searchResults }) => {
             L:{searchResults.forecast.list[0].main.temp_min}&deg; | H:
             {searchResults.forecast.list[0].main.temp_max}&deg;
           </span>
+          <FavoriteIcon
+            searchResults={searchResults}
+            favorites={favorites}
+            setFavorites={setFavorites}
+            profileId={profileId}
+          />
         </>
       ) : (
         <>
