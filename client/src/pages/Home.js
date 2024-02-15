@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useQuery } from "@apollo/client";
 
+import { QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 
 import Sidebar from "../components/PageSearch/sidebar";
@@ -7,39 +9,29 @@ import SearchResultsContainer from "../components/PageSearch/searchResultsContai
 
 const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
-
-  const [profileId, setProfile] = useState("");
   const [favorites, setFavorites] = useState([]);
 
-  useEffect(() => {
-    const updateProfile = async () => {
-      if (Auth.loggedIn()) {
-        try {
-          const token = Auth.getProfile();
-          console.log(`${token.data.name} logged in`);
-          setFavorites(token.data.favorites);
-          setProfile(token.data._id);
-        } catch (error) {
-          console.error("Error fetching profile:", error);
-        }
-      } else {
-        console.log("User not logged in");
-      }
-    };
+  const { data, loading, error } = useQuery(QUERY_ME, {
+    skip: !Auth.loggedIn(),
+  });
 
-    updateProfile();
-  }, []);
+  useEffect(() => {
+    if (!loading && data && data.me) {
+      setFavorites(data.me.favorites);
+    }
+    if (error) {
+      console.error("Error fetching user data:", error);
+    }
+  }, [data, loading, error]);
 
   return (
     <section className="mt-16 flex h-screen flex-row flex-nowrap">
-      {/* user searches terms from here */}
       <Sidebar setSearchResults={setSearchResults} />
-      {/* user views results, adds favorites */}
       <SearchResultsContainer
         searchResults={searchResults}
         favorites={favorites}
         setFavorites={setFavorites}
-        profileId={profileId}
+        profileId={data?.me?._id}
       />
     </section>
   );

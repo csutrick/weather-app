@@ -1,40 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useMutation } from "@apollo/client";
 
 import { ADD_FAVORITE, REMOVE_FAVORITE } from "../../utils/mutations";
-
 import { FaHeart } from "react-icons/fa";
 
 const FavoriteIcon = ({
   searchResults,
   favorites,
-  Setfavorites,
+  setFavorites,
   profileId,
 }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [addFavorite] = useMutation(ADD_FAVORITE, {
+    onError: (error) => console.error("Error adding favorite:", error.message),
+    onCompleted: () => {
+      setFavorites((prevFavorites) => [searchResults.city, ...prevFavorites]);
+    },
+  });
+  const [removeFavorite] = useMutation(REMOVE_FAVORITE, {
+    onError: (error) =>
+      console.error("Error removing favorite:", error.message),
+    onCompleted: () => {
+      setFavorites((prevFavorites) =>
+        prevFavorites.filter((item) => item !== searchResults.city),
+      );
+    },
+  });
+
+  const isFavorite = useMemo(
+    () => favorites.includes(searchResults.city),
+    [favorites, searchResults.city],
+  );
 
   const toggleFavorite = async () => {
-    const favorite = searchResults.city;
-    const isFavorite = favorites.includes(favorite);
+    const variables = { profileId, favorite: searchResults.city };
 
-    if (isFavorite) {
-      console.log(favorite, "removed from favorites");
-    } else {
-      console.log(favorite, "added too favorites");
+    try {
+      if (isFavorite) {
+        await removeFavorite({ variables });
+      } else {
+        await addFavorite({ variables });
+      }
+    } catch (error) {
+      console.error("Error in toggleFavorite:", error.message);
     }
-    setIsFavorite((prevIsFavorite) => !prevIsFavorite);
   };
-
-  // Happens every search
-  useEffect(() => {
-    const isFavorite = favorites.includes(searchResults.city);
-
-    if (isFavorite) {
-      setIsFavorite(true);
-    } else {
-      setIsFavorite(false);
-    }
-  }, [searchResults]);
 
   return (
     <div className="absolute right-4 top-4">
