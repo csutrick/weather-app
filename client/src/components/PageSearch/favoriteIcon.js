@@ -1,6 +1,5 @@
-import React, { useEffect, useMemo } from "react";
+import React from "react";
 import { useMutation } from "@apollo/client";
-
 import { ADD_FAVORITE, REMOVE_FAVORITE } from "../../utils/mutations";
 import { FaHeart } from "react-icons/fa";
 
@@ -12,36 +11,29 @@ const FavoriteIcon = ({
 }) => {
   const [addFavorite] = useMutation(ADD_FAVORITE, {
     onError: (error) => console.error("Error adding favorite:", error.message),
-    onCompleted: () => {
-      setFavorites((prevFavorites) => [searchResults.city, ...prevFavorites]);
+    onCompleted: (data) => {
+      setFavorites([searchResults.city, ...favorites]);
     },
   });
+
   const [removeFavorite] = useMutation(REMOVE_FAVORITE, {
     onError: (error) =>
       console.error("Error removing favorite:", error.message),
-    onCompleted: () => {
-      setFavorites((prevFavorites) =>
-        prevFavorites.filter((item) => item !== searchResults.city),
-      );
+    onCompleted: (data) => {
+      setFavorites(favorites.filter((city) => city !== searchResults.city));
     },
   });
 
-  const isFavorite = useMemo(
-    () => favorites.includes(searchResults.city),
-    [favorites, searchResults.city],
-  );
+  const isFavorite = favorites.includes(searchResults.city);
 
   const toggleFavorite = async () => {
     const variables = { profileId, favorite: searchResults.city };
+    console.log("Toggling favorite", searchResults.city);
 
-    try {
-      if (isFavorite) {
-        await removeFavorite({ variables });
-      } else {
-        await addFavorite({ variables });
-      }
-    } catch (error) {
-      console.error("Error in toggleFavorite:", error.message);
+    if (isFavorite) {
+      await removeFavorite({ variables });
+    } else {
+      await addFavorite({ variables });
     }
   };
 
