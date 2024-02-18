@@ -9,6 +9,7 @@ import Sidebar from "../components/PageSearch/sidebar";
 import SearchResultsContainer from "../components/PageSearch/searchResultsContainer";
 
 const Home = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
@@ -27,9 +28,13 @@ const Home = () => {
 
   return (
     <section className="relative mt-16 flex h-screen flex-col flex-nowrap">
-      <FavoriteContainer favorites={favorites} />
+      <FavoriteContainer favorites={favorites} setSearchTerm={setSearchTerm}/>
       <div className="flex h-screen flex-row">
-        <Sidebar setSearchResults={setSearchResults} />
+        <Sidebar
+          setSearchResults={setSearchResults}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+        />
         <SearchResultsContainer
           searchResults={searchResults}
           favorites={favorites}

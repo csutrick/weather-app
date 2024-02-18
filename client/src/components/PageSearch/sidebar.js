@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useLazyQuery } from "@apollo/client";
 import { QUERY_WEATHER_FORECAST } from "../../utils/queries";
@@ -8,8 +8,7 @@ import Auth from "../../utils/auth.js";
 import Input from "./input";
 import SearchHistory from "./searchHistory";
 
-const Sidebar = ({ setSearchResults }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+const Sidebar = ({ setSearchResults, searchTerm, setSearchTerm }) => {
   const [statusMessage, setStatusMessage] = useState("");
   const [messageType, setMessageType] = useState("normal");
 
@@ -47,7 +46,7 @@ const Sidebar = ({ setSearchResults }) => {
     },
   );
 
-  const handleSearch = async (searchTerm) => {
+  const handleSearch = async () => {
     if (Auth.loggedIn()) {
       console.log("Searching weather for:", searchTerm);
       setStatusMessage("Loading...");
@@ -60,14 +59,16 @@ const Sidebar = ({ setSearchResults }) => {
     }
   };
 
+  useEffect(() => {
+    console.log("Search for", searchTerm);
+
+    handleSearch(searchTerm)
+  }, [searchTerm]);
+
   return (
     <div className="w-1/4 bg-green-300 p-4">
       {/* User input */}
-      <Input
-        handleSearch={handleSearch}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-      />
+      <Input setSearchTerm={setSearchTerm} searchTerm={searchTerm}/>
       <p
         className={`mb-4 w-full text-center text-2xl font-bold ${messageType === "error" ? "text-red-500" : "text-black"}`}
       >
