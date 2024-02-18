@@ -28,7 +28,11 @@ const Home = () => {
 
   return (
     <section className="relative mt-16 flex h-screen flex-col flex-nowrap">
-      <FavoriteContainer favorites={favorites} setSearchTerm={setSearchTerm}/>
+      <FavoriteContainer
+        favorites={favorites}
+        setSearchTerm={setSearchTerm}
+        profileId={data?.me?._id}
+      />
       <div className="flex h-screen flex-row">
         <Sidebar
           setSearchResults={setSearchResults}

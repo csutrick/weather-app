@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+
+import { REMOVE_FAVORITE } from "../../utils/mutations";
 
 import Auth from "../../utils/auth";
 
 import { FaArrowDown } from "react-icons/fa";
 import { BsFillTrashFill } from "react-icons/bs";
 
-const FavoriteContainer = ({ favorites, setSearchTerm }) => {
+const FavoriteContainer = ({ favorites, setSearchTerm, profileId }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const [removeFavorite] = useMutation(REMOVE_FAVORITE, {
+    onError: (error) =>
+      console.error("Error removing favorite:", error.message),
+  });
 
   const favoriteClick = (favorite) => {
     console.log(`Selected Favorite: ${favorite}`);
@@ -15,9 +23,12 @@ const FavoriteContainer = ({ favorites, setSearchTerm }) => {
     setSearchTerm(favorite);
   };
 
-  useEffect(() => {
-    console.log("User favorites updated!", favorites)
-  }, [favorites]);
+  const deleteFavorite = (favorite) => {
+    const variables = { profileId, favorite };
+    console.log(`Deleting Favorite: ${favorite}`);
+
+    removeFavorite({ variables });
+  };
 
   return (
     <section className="flex h-auto w-full items-center justify-center bg-orange-300 p-2">
@@ -44,7 +55,10 @@ const FavoriteContainer = ({ favorites, setSearchTerm }) => {
                       >
                         {favorite}
                       </p>
-                      <button className="flex w-full items-center justify-center">
+                      <button
+                        onClick={() => deleteFavorite(favorite)}
+                        className="flex w-full items-center justify-center"
+                      >
                         <BsFillTrashFill className="text-red-400" />
                       </button>
                     </div>
