@@ -6,11 +6,13 @@ import Auth from "../../utils/auth";
 import { FaArrowDown } from "react-icons/fa";
 import { BsFillTrashFill } from "react-icons/bs";
 
-const FavoriteContainer = ({ favorites }) => {
+const FavoriteContainer = ({ favorites, setSearchTerm }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const favoriteClick = (favorite) => {
     console.log(`Selected Favorite: ${favorite}`);
+
+    setSearchTerm(favorite);
   };
 
   useEffect(() => {
