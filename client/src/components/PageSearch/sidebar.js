@@ -28,7 +28,7 @@ const Sidebar = ({ setSearchResults, searchTerm, setSearchTerm }) => {
 
         if (data.getWeatherForecast && data.getWeatherForecast.city) {
           setSearchHistory((prevHistory) => {
-            const city = data.getWeatherForecast.city;
+            const city = capitalizeFirstLetter(data.getWeatherForecast.city);
             const cityIndex = prevHistory.indexOf(city);
 
             if (cityIndex !== -1) {
@@ -64,6 +64,10 @@ const Sidebar = ({ setSearchResults, searchTerm, setSearchTerm }) => {
 
     handleSearch(searchTerm)
   }, [searchTerm]);
+
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  };
 
   return (
     <div className="w-1/4 bg-green-300 p-4">
