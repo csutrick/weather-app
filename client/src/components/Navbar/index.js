@@ -16,29 +16,13 @@ const Navbar = () => {
     navigate("/login");
   };
 
-  useEffect(() => {
-    try {
-      const token = Auth.getProfile();
-      let user = token.data.name;
-      if (user.includes(" ")) {
-        user = user.split(" ")[0];
-      }
-      setUsername(user);
-    } catch {}
-  }, []);
-
   return (
     <nav className="fixed top-0 z-40 flex h-16 w-full flex-nowrap items-center justify-between bg-red-300 px-4">
       <Logo />
       {Auth.loggedIn() ? (
-        <div className="flex flex-nowrap">
-          <p className="mr-4 border-r-4 border-black pr-4 text-xl text-black">
-            Welcome, {username}
-          </p>
-          <button className="text-xl font-bold text-black" onClick={logout}>
-            Logout
-          </button>
-        </div>
+        <button className="text-xl font-bold text-black" onClick={logout}>
+          Logout
+        </button>
       ) : (
         <Link to="/login">
           <p className="text-xl font-bold text-black">Login/Signup</p>
