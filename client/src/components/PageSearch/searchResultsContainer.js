@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import Auth from "../../utils/auth";
 
+import SearchResults from "./searchResults";
+
 import FavoriteIcon from "./favoriteIcon";
 
 const SearchResultsContainer = ({
@@ -12,29 +14,14 @@ const SearchResultsContainer = ({
   profileId,
 }) => {
   useEffect(() => {
-    console.log("New search results, updating page");
+    console.log("New search results, updating page", searchResults);
   }, [searchResults]);
 
   return (
-    <div className="relative flex flex-grow flex-col items-center justify-center bg-blue-300">
+    <div className="relative flex flex-grow flex-col items-center bg-blue-300">
       {searchResults && searchResults.city ? (
         <>
-          <h2 className="border-b-4 border-black bg-red-300 px-8 text-5xl font-bold uppercase tracking-wider text-black">
-            {searchResults.city}
-          </h2>
-          <h2 className="my-6 text-6xl font-bold text-black">
-            {searchResults.forecast.list[0].main.temp}&deg;F
-          </h2>
-          <h2 className="text-base text-black">
-            {searchResults.forecast.list[0].wind.speed} MPH Wind
-          </h2>
-          <h2 className="text-base text-black">
-            {searchResults.forecast.list[0].main.humidity}% Humidity
-          </h2>
-          <span className="text-lg font-bold text-black">
-            L:{searchResults.forecast.list[0].main.temp_min}&deg; | H:
-            {searchResults.forecast.list[0].main.temp_max}&deg;
-          </span>
+          <SearchResults searchResults={searchResults} />
           <FavoriteIcon
             searchResults={searchResults}
             favorites={favorites}
