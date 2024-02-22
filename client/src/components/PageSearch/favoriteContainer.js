@@ -41,17 +41,17 @@ const FavoriteContainer = ({ favorites, setSearchTerm, profileId }) => {
           {isCollapsed ? (
             <p className="text-xl font-bold text-black">Your Favorites</p>
           ) : (
-            <div className="flex flex-col text-xl font-bold text-black">
-              <p className="text-center text-xl font-bold text-black">
+            <div className="w-full flex flex-col text-xl font-bold text-black">
+              <p className="text-center text-xl font-bold text-black mb-2">
                 Your Favorites
               </p>
-              <div className="flex flex-row flex-wrap items-center justify-evenly space-x-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-flow-row w-full gap-2">
                 {favorites.length > 0 ? (
                   favorites.map((favorite) => (
-                    <div key={favorite} className="bg-gray-200 p-2">
+                    <div key={favorite} className="bg-gray-200 flex flex-col flex-nowrap">
                       <p
                         onClick={() => favoriteClick(favorite)}
-                        className="pb-2 text-2xl font-bold text-black"
+                        className="w-full text-center"
                       >
                         {favorite}
                       </p>
