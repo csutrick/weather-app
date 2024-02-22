@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <div className="bg-green-300">
       <Link className="" to="/">
-        <p className="text-4xl font-bold tracking-wider">Weather App</p>
+        <p className="text-4xl font-bold tracking-wider whitespace-nowrap">Weather App</p>
       </Link>
     </div>
   );
