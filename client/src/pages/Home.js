@@ -33,7 +33,7 @@ const Home = () => {
         setSearchTerm={setSearchTerm}
         profileId={data?.me?._id}
       />
-      <div className="flex h-screen flex-row">
+      <div className="flex h-screen flex-col sm:flex-row">
         <Sidebar
           setSearchResults={setSearchResults}
           searchTerm={searchTerm}

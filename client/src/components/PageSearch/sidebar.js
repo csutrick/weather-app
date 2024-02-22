@@ -40,7 +40,7 @@ const Sidebar = ({ setSearchResults, searchTerm, setSearchTerm }) => {
       },
       onError: (error) => {
         console.error("Error fetching weather data:", error); // Log error
-        setStatusMessage("City not found");
+        setStatusMessage("City Not Found");
         setMessageType("error");
       },
     },
@@ -60,9 +60,10 @@ const Sidebar = ({ setSearchResults, searchTerm, setSearchTerm }) => {
   };
 
   useEffect(() => {
-    console.log("Search for", searchTerm);
-
-    handleSearch(searchTerm)
+    if (searchTerm) {
+      console.log("Search for", searchTerm);
+      handleSearch(searchTerm);
+    }
   }, [searchTerm]);
 
   const capitalizeFirstLetter = (string) => {
@@ -70,11 +71,11 @@ const Sidebar = ({ setSearchResults, searchTerm, setSearchTerm }) => {
   };
 
   return (
-    <div className="w-1/4 bg-green-300 p-4">
+    <div className="w-full bg-green-300 p-4 sm:w-1/3">
       {/* User input */}
-      <Input setSearchTerm={setSearchTerm} searchTerm={searchTerm}/>
+      <Input setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
       <p
-        className={`mb-4 w-full text-center text-2xl font-bold ${messageType === "error" ? "text-red-500" : "text-black"}`}
+        className={`mb-2 w-full text-center text-2xl font-bold tracking-wider sm:text-xl sm:tracking-normal md:text-2xl md:tracking-wider ${messageType === "error" ? "text-red-500" : "text-black"}`}
       >
         {statusMessage}
       </p>

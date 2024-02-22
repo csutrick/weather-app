@@ -28,23 +28,23 @@ const SearchHistory = ({
 
   return (
     <div className="flex flex-col items-center justify-start bg-blue-300">
-      <h3 className="mb-2 border-b-4 border-black bg-red-300 px-3 text-xl font-bold tracking-wider">
+      <h3 className="mt-2 text-nowrap border-b-4 border-black bg-red-300 px-4 text-2xl font-bold sm:text-lg md:text-2xl md:tracking-wide lg:text-3xl lg:tracking-wider xl:text-4xl">
         Search History
       </h3>
-      <div className="flex w-full flex-col space-y-2">
+      <div className="grid w-full grid-flow-row grid-cols-2 gap-2 p-2 sm:flex sm:flex-col">
         {searchHistory.map((city, index) => (
           <div
             key={index}
-            className="flex w-full flex-row flex-nowrap bg-red-300 p-1 text-lg font-bold"
+            className="flex flex-row flex-nowrap justify-between text-nowrap bg-red-300 p-1"
           >
             <h3
               onClick={() => histoyItemClick(city)}
-              className="w-full pl-2 text-2xl"
+              className="text-xl font-bold md:text-2xl lg:text-3xl lg:tracking-wider xl:text-4xl"
             >
               {city}
             </h3>
             <button onClick={() => handleDeleteSearch(city)} className="px-2">
-              <BsFillTrashFill className="text-2xl text-black hover:text-gray-300" />
+              <BsFillTrashFill className="text-xl md:text-2xl lg:text-3xl xl:text-4xl" />
             </button>
           </div>
         ))}

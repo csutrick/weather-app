@@ -23,7 +23,7 @@ const Input = ({ setSearchTerm, searchTerm }) => {
         type="text"
         value={currentSearchTerm}
         onChange={(e) => setCurrentSearchTerm(e.target.value)}
-        className="w-full rounded-l-xl pl-3 text-2xl outline-none"
+        className="w-full rounded-l-xl pl-3 text-2xl sm:text-base md:text-xl lg:text-3xl xl:text-4xl outline-none"
       />
       <button
         onClick={() => searchUserInput()}
