@@ -27,7 +27,7 @@ const Home = () => {
   }, [data, loading, error]);
 
   return (
-    <section className="relative mt-16 flex h-screen flex-col flex-nowrap">
+    <section className="relative mt-16 flex flex-col flex-nowrap">
       <FavoriteContainer
         favorites={favorites}
         setSearchTerm={setSearchTerm}
