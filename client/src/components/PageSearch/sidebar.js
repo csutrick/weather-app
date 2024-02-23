@@ -71,11 +71,11 @@ const Sidebar = ({ setSearchResults, searchTerm, setSearchTerm }) => {
   };
 
   return (
-    <div className="w-full bg-green-300 p-4 sm:w-1/3">
+    <div className="w-full p-4 sm:w-1/3">
       {/* User input */}
       <Input setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
       <p
-        className={`mb-2 w-full text-center text-2xl font-bold tracking-wider sm:text-xl sm:tracking-normal md:text-2xl md:tracking-wider ${messageType === "error" ? "text-red-500" : "text-black"}`}
+        className={`mb-2 drop-shadow-md w-full text-center text-2xl font-bold tracking-wider sm:text-xl sm:tracking-normal md:text-2xl md:tracking-wider ${messageType === "error" ? "text-red-500" : "text-black"}`}
       >
         {statusMessage}
       </p>
