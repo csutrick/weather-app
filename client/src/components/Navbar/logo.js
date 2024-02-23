@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
-    <div className="bg-green-300">
+    <div className="">
       <Link className="" to="/">
-        <p className="text-4xl font-bold tracking-wider whitespace-nowrap">Weather App</p>
+        <p className="whitespace-nowrap text-4xl font-bold tracking-wider text-white drop-shadow-md">
+          Weather App
+        </p>
       </Link>
     </div>
   );

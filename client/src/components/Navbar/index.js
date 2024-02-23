@@ -17,15 +17,18 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="drop-shadow-md fixed top-0 z-40 flex h-16 w-full flex-nowrap items-center justify-between bg-blue-400 px-4">
+    <nav className="fixed top-0 z-40 flex h-16 w-full flex-nowrap items-center justify-between bg-blue-400 px-4 drop-shadow-md">
       <Logo />
       {Auth.loggedIn() ? (
-        <button className="text-xl font-bold text-black" onClick={logout}>
+        <button
+          className="text-xl font-bold text-white drop-shadow-md"
+          onClick={logout}
+        >
           Logout
         </button>
       ) : (
         <Link to="/login">
-          <p className="text-xl font-bold text-black">Login/Signup</p>
+          <p className="text-xl font-bold text-white">Login/Signup</p>
         </Link>
       )}
     </nav>

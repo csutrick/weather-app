@@ -35,7 +35,7 @@ const SearchHistory = ({
         {searchHistory.map((city, index) => (
           <div
             key={index}
-            className="flex flex-row flex-nowrap justify-between text-nowrap rounded-lg bg-gray-200 p-2 drop-shadow-md 
+            className="flex flex-row flex-nowrap justify-between text-nowrap rounded-lg border-4 border-blue-200 bg-gray-200 p-2 drop-shadow-md
             transition-all duration-100 ease-in hover:scale-105 hover:bg-blue-200 hover:drop-shadow-lg"
           >
             <h3
@@ -45,7 +45,7 @@ const SearchHistory = ({
               {city}
             </h3>
             <button onClick={() => handleDeleteSearch(city)} className="px-2">
-              <BsFillTrashFill className="text-xl text-gray-400 hover:text-red-400 md:text-2xl lg:text-3xl xl:text-4xl ease-in transition-all duration-100" />
+              <BsFillTrashFill className="text-xl text-gray-400 transition-all duration-100 ease-in hover:text-red-400 md:text-2xl lg:text-3xl xl:text-4xl" />
             </button>
           </div>
         ))}

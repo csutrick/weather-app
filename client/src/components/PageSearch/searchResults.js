@@ -4,27 +4,27 @@ const SearchResults = ({ searchResults }) => {
   return (
     <div className="flex w-full flex-col items-center py-2">
       <div className="flex w-full flex-col items-center">
-        <h2 className="border-b-4 border-black px-4 text-6xl font-bold capitalize tracking-wider sm:text-5xl md:text-6xl">
+        <h2 className="border-b-4 border-black px-4 text-6xl font-bold capitalize tracking-wider drop-shadow-lg sm:text-5xl md:text-6xl">
           {searchResults.city}
         </h2>
-        <h3 className="w-full pt-4 text-center text-4xl font-bold text-black md:text-5xl">
+        <h3 className="w-full pt-4 text-center text-4xl font-bold text-black drop-shadow-md md:text-5xl">
           {searchResults.forecast.list[0].main.temp}&deg;F
         </h3>
-        <h3 className="w-full text-center text-xl tracking-wide text-black md:text-2xl">
+        <h3 className="w-full text-center text-xl tracking-wide text-black drop-shadow-md md:text-2xl">
           {searchResults.forecast.list[0].wind.speed} MPH Wind
         </h3>
-        <h3 className="w-full text-center text-xl tracking-wide text-black md:text-2xl">
+        <h3 className="w-full text-center text-xl tracking-wide text-black drop-shadow-md md:text-2xl">
           {searchResults.forecast.list[0].main.humidity}% Humidity
         </h3>
-        <span className="flex w-full flex-row flex-nowrap justify-center text-lg font-bold text-black md:text-xl">
+        <span className="flex w-full flex-row flex-nowrap justify-center text-lg font-bold text-black drop-shadow-md md:text-xl">
           L:{searchResults.forecast.list[0].main.temp_min}&deg; | H:
           {searchResults.forecast.list[0].main.temp_max}&deg;
         </span>
       </div>
-      <h3 className="mb-4 mt-8 border-b-4 border-black px-6 text-center text-4xl font-bold">
+      <h3 className="mt-8 border-b-4 border-black px-6 text-center text-4xl font-bold drop-shadow-md">
         Forcast:
       </h3>
-      <div className="w-full px-2">
+      <div className="w-full space-y-4 p-4">
         {Array.isArray(searchResults.forecast.list) &&
           searchResults.forecast.list.map((item, index) => {
             if (index !== 0 && index % 8 === 0) {
@@ -34,7 +34,7 @@ const SearchResults = ({ searchResults }) => {
               return (
                 <div
                   key={index}
-                  className="mb-2 flex flex-col items-center bg-green-300"
+                  className="flex flex-col items-center rounded-lg bg-white drop-shadow-md"
                 >
                   <h2 className="border-b-2 border-black text-xl font-bold tracking-widest md:text-2xl">
                     {dateString}

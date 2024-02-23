@@ -41,7 +41,7 @@ const FavoriteIcon = ({
     <div className="absolute right-4 top-4">
       <FaHeart
         onClick={toggleFavorite}
-        className={`text-4xl ${isFavorite ? "text-red-500" : "text-gray-300"}`}
+        className={`text-4xl hover:scale-110 drop-shadow-md hover:drop-shadow-lg transition-all duration-100 ease-in ${isFavorite ? "text-red-500" : "text-gray-300"}`}
       />
     </div>
   );
