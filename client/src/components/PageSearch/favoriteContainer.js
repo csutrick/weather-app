@@ -31,7 +31,7 @@ const FavoriteContainer = ({ favorites, setSearchTerm, profileId }) => {
   };
 
   return (
-    <section className="flex h-auto w-full items-center justify-center bg-orange-300 p-2">
+    <section className="z-30 flex h-auto w-full items-center justify-center bg-blue-200 p-2 drop-shadow-lg">
       <FaArrowDown
         onClick={() => setIsCollapsed((prevCollapsed) => !prevCollapsed)}
         className={`absolute right-2 top-2 text-2xl text-black ${isCollapsed ? "rotate-180" : "rotate-0"}`}
@@ -41,14 +41,18 @@ const FavoriteContainer = ({ favorites, setSearchTerm, profileId }) => {
           {isCollapsed ? (
             <p className="text-xl font-bold text-black">Your Favorites</p>
           ) : (
-            <div className="w-full flex flex-col text-xl font-bold text-black">
-              <p className="text-center text-xl font-bold text-black mb-2">
+            <div className="flex w-full flex-col text-xl font-bold text-black">
+              <p className="mb-2 text-center text-xl font-bold text-black">
                 Your Favorites
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 grid-flow-row w-full gap-2">
+              <div className="grid w-full grid-flow-row grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                 {favorites.length > 0 ? (
                   favorites.map((favorite) => (
-                    <div key={favorite} className="bg-gray-200 flex flex-col flex-nowrap">
+                    <div
+                      key={favorite}
+                      className="flex flex-col flex-nowrap rounded-lg bg-gray-100 drop-shadow-md transition-all
+                      duration-100 ease-in hover:scale-105 hover:bg-gray-200 hover:drop-shadow-lg"
+                    >
                       <p
                         onClick={() => favoriteClick(favorite)}
                         className="w-full text-center"
@@ -57,9 +61,9 @@ const FavoriteContainer = ({ favorites, setSearchTerm, profileId }) => {
                       </p>
                       <button
                         onClick={() => deleteFavorite(favorite)}
-                        className="flex w-full items-center justify-center"
+                        className="group flex w-full items-center justify-center"
                       >
-                        <BsFillTrashFill className="text-red-400" />
+                        <BsFillTrashFill className="text-gray-400 transition-all duration-100 ease-in hover:text-red-400 group-hover:scale-105" />
                       </button>
                     </div>
                   ))
