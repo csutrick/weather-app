@@ -18,7 +18,7 @@ const SearchResultsContainer = ({
   }, [searchResults]);
 
   return (
-    <div className="relative flex flex-grow flex-col items-center bg-blue-300">
+    <div className="relative flex flex-grow flex-col items-center bg-blue-200">
       {searchResults && searchResults.city ? (
         <>
           <SearchResults searchResults={searchResults} />
