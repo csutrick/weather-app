@@ -18,7 +18,7 @@ const SearchResultsContainer = ({
   }, [searchResults]);
 
   return (
-    <div className="relative flex flex-grow flex-col items-center bg-blue-200">
+    <div className="relative flex min-h-96 w-full flex-col items-center justify-center border-l-0 border-blue-400 bg-blue-200 sm:border-l-4">
       {searchResults && searchResults.city ? (
         <>
           <SearchResults searchResults={searchResults} />
@@ -32,7 +32,7 @@ const SearchResultsContainer = ({
       ) : (
         <>
           {Auth.loggedIn() ? (
-            <h2 className="text-2xl font-bold text-black">
+            <h2 className="text-2xl font-bold tracking-wider text-black">
               No data to display
             </h2>
           ) : (
