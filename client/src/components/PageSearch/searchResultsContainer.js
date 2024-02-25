@@ -18,7 +18,7 @@ const SearchResultsContainer = ({
   }, [searchResults]);
 
   return (
-    <div className="relative flex min-h-96 w-full flex-col items-center justify-center border-l-0 border-blue-400 bg-blue-200 sm:border-l-4">
+    <div className="relative flex min-h-96 w-full flex-col items-center justify-center border-l-0 border-blue-300 bg-blue-200 sm:border-l-4">
       {searchResults && searchResults.city ? (
         <>
           <SearchResults searchResults={searchResults} />
