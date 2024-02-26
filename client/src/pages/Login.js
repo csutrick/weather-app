@@ -5,14 +5,12 @@ import Form from "../components/Login/form.js";
 
 const Login = () => {
   return (
-    <section className="mt-16 flex h-screen flex-col items-center justify-center bg-white">
-      <div className="flex flex-col items-center justify-center rounded-xl border-8 border-black bg-white p-4">
-        <h2 className="mb-8 text-6xl font-bold text-black">Login Page</h2>
+    <section className="flex h-screen w-full flex-row flex-nowrap items-center justify-center pt-16">
+      <div className="flex h-full w-full items-center justify-center sm:w-1/2">
         <Form />
-        <p className="mt-4 text-black">Dont have an account?</p>
-        <Link to="/signup">
-          <p className="text-xl font-bold text-black">Signup Page</p>
-        </Link>
+      </div>
+      <div className="invisible flex h-full w-0 items-center justify-center bg-blue-200 sm:visible sm:w-1/2">
+        <p className="font-bold tracking-widest text-gray-400">Image Here</p>
       </div>
     </section>
   );
