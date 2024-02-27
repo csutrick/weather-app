@@ -47,7 +47,7 @@ const Footer = () => {
               </Link>
             </div>
           )}
-          <li className="mt-2 text-4xl font-bold tracking-wider text-white">
+          <li className="mt-2 text-4xl font-bold tracking-wider text-white drop-shadow-lg">
             Weather-App
           </li>
         </ul>
@@ -57,13 +57,13 @@ const Footer = () => {
               View Project Code
             </label>
             <a
-              href="#"
+              href="https://github.com/csutrick/weather-app"
               target="_blank"
               rel="noopener noreferrer"
               className="flex w-[100%] justify-center rounded-lg bg-white px-10 py-1 text-4xl drop-shadow-md transition-all duration-150
               ease-in-out hover:scale-105 hover:bg-blue-400 hover:text-white hover:drop-shadow-lg active:scale-110 active:bg-blue-300 active:text-gray-100 active:drop-shadow-xl"
             >
-              <FaFileCode />
+              <FaFileCode className="text-gray-600" />
             </a>
           </div>
           <div className="flex flex-col items-center">
@@ -71,13 +71,13 @@ const Footer = () => {
               View Github
             </label>
             <a
-              href="#"
+              href="https://github.com/csutrick"
               target="_blank"
               rel="noopener noreferrer"
               className="flex w-[100%] justify-center rounded-lg bg-white px-10 py-1 text-4xl drop-shadow-md transition-all duration-150
               ease-in-out hover:scale-105 hover:bg-green-400 hover:text-white hover:drop-shadow-lg active:scale-110 active:bg-green-300 active:text-gray-100 active:drop-shadow-xl"
             >
-              <FaGithub />
+              <FaGithub className="text-gray-600" />
             </a>
           </div>
         </div>

@@ -32,22 +32,22 @@ const SearchResultsContainer = ({
       ) : (
         <>
           {Auth.loggedIn() ? (
-            <h2 className="text-2xl font-bold tracking-wider text-black">
+            <h2 className="text-2xl font-bold tracking-wider text-gray-600">
               No data to display
             </h2>
           ) : (
             <>
-              <p>User not Signed in</p>
+              <p className="text-gray-600">User not Signed in</p>
               <div className="flex flex-row flex-nowrap items-center justify-center">
                 <Link
-                  className="px-3 py-1 text-2xl font-bold text-black"
+                  className="px-3 py-1 text-2xl font-bold text-gray-600"
                   to="/login"
                 >
                   Login
                 </Link>
-                <p className="text-base font-bold text-black">or</p>
+                <p className="text-base font-bold text-gray-600">or</p>
                 <Link
-                  className="px-3 py-1 text-2xl font-bold text-black"
+                  className="px-3 py-1 text-2xl font-bold text-gray-600"
                   to="/signup"
                 >
                   Signup

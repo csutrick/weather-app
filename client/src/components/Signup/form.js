@@ -43,7 +43,7 @@ const SignUpForm = () => {
 
   return (
     <div className="flex w-3/4 flex-col items-center justify-center rounded-2xl bg-blue-300 p-4 drop-shadow-lg">
-      <h2 className="mb-6 whitespace-nowrap border-b-4 border-white px-6 pb-1 text-4xl font-bold tracking-wider text-white sm:text-3xl md:text-4xl">
+      <h2 className="mb-6 whitespace-nowrap drop-shadow-md border-b-4 border-white px-6 pb-1 text-4xl font-bold tracking-wider text-white sm:text-3xl md:text-4xl">
         Signup Page
       </h2>
       <form
@@ -52,13 +52,13 @@ const SignUpForm = () => {
       >
         {/* Username field */}
         <label
-          className="mb-1 text-sm font-bold text-gray-700"
+          className="mb-1 text-sm font-bold text-gray-700 drop-shadow-md"
           htmlFor="username"
         >
           Username:
         </label>
         <input
-          className="mb-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+          className="mb-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none drop-shadow-md"
           id="username"
           placeholder="Enter name"
           name="name"
@@ -68,13 +68,13 @@ const SignUpForm = () => {
         />
         {/* Email field */}
         <label
-          className="mb-1 text-sm font-bold text-gray-700"
+          className="mb-1 text-sm font-bold text-gray-700 drop-shadow-md"
           htmlFor="username"
         >
           Email:
         </label>
         <input
-          className="mb-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+          className="mb-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none drop-shadow-md"
           id="email"
           placeholder="Your email"
           name="email"
@@ -83,11 +83,11 @@ const SignUpForm = () => {
           onChange={handleChange}
         />
         {/* Password field */}
-        <label className="text-sm font-bold text-gray-700" htmlFor="password">
+        <label className="text-sm font-bold text-gray-700 drop-shadow-md" htmlFor="password">
           Password:
         </label>
         <input
-          className="mb-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+          className="mb-2 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none drop-shadow-md"
           id="password"
           placeholder="******"
           name="password"
@@ -98,7 +98,7 @@ const SignUpForm = () => {
         {/* Signup Button */}
         <div className="mt-8 flex w-full justify-center">
           <button
-            className="rounded-lg bg-white px-8 py-2 text-lg font-bold text-black hover:bg-gray-300"
+            className="rounded-lg bg-white px-8 py-2 text-lg font-bold text-black hover:bg-gray-300 hover:scale-105 drop-shadow-md hover:drop-shadow-lg transition-all duration-100 ease-in"
             type="submit"
           >
             Signup
@@ -106,17 +106,17 @@ const SignUpForm = () => {
         </div>
       </form>
       {loading && (
-        <div className="text-lg font-bold tracking-wider text-white">
+        <div className="text-lg font-bold tracking-wider text-white drop-shadow-md">
           Loading...
         </div>
       )}
       {error && (
-        <div className="text-lg font-bold tracking-wider text-white">
+        <div className="text-lg font-bold tracking-wider text-red-400">
           {error.message}
         </div>
       )}
       <div className="mt-4 flex w-full flex-col items-center justify-center">
-        <p className="text-white">Already have an account?</p>
+        <p className="text-white drop-shadow-md">Already have an account?</p>
         <Link
           to="/login"
           className="w-min text-xl font-bold text-white drop-shadow-md transition-all duration-100 ease-in-out 
