@@ -46,7 +46,7 @@ First either signup or login, user must be logged in to use the application. Usi
    - npm run develop
 
 3. **View Website**
-   - Open your browser and visit http://localhost:3000 to use Weather Wise
+   - Open your browser and visit http://localhost:3000 to use Weather App
 
 ## Technologies
 
@@ -67,14 +67,14 @@ This project was built with:
 
 2. **Jsonwebtoken**
 
-   - Jsonwebtoken is used in user authentication within Weather Wise. After a user successfully logs in, a JWT is generated and included in subsequent requests to authenticate and authorize the user's access to protected routes. The server validates the JWT to ensure the integrity and authenticity of the user.
+   - Jsonwebtoken is used in user authentication within Weather App. After a user successfully logs in, a JWT is generated and included in subsequent requests to authenticate and authorize the user's access to protected routes. The server validates the JWT to ensure the integrity and authenticity of the user.
 
 3. **Openweather.org**
 
-   - Weather Wise utilizes the OpenWeatherMap API to fetch real-time weather data based on user queries. When a user searches for a city, the application sends a request to the OpenWeatherMap API, retrieves the relevant weather information, and presents it to the user in a clear format.
+   - Weather APP utilizes the OpenWeatherMap API to fetch real-time weather data based on user queries. When a user searches for a city, the application sends a request to the OpenWeatherMap API, retrieves the relevant weather information, and presents it to the user in a clear format.
 
 4. **Tailwinds**
-   - Tailwind CSS is the primary styling framework used in Weather Wise to create a consistent and visually appealing user interface.
+   - Tailwind CSS is the primary styling framework used in Weather App to create a consistent and visually appealing user interface.
 
 ## Contact
 
