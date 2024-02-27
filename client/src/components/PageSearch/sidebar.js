@@ -75,7 +75,7 @@ const Sidebar = ({ setSearchResults, searchTerm, setSearchTerm }) => {
       {/* User input */}
       <Input setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
       <p
-        className={`mb-2 drop-shadow-md w-full text-center text-2xl font-bold tracking-wider sm:text-xl sm:tracking-normal md:text-2xl md:tracking-wider ${messageType === "error" ? "text-red-500" : "text-black"}`}
+        className={`mb-2 w-full text-center text-2xl font-bold tracking-wider drop-shadow-md sm:text-xl sm:tracking-normal md:text-2xl md:tracking-wider ${messageType === "error" ? "text-red-500" : "text-gray-600"}`}
       >
         {statusMessage}
       </p>

@@ -28,7 +28,7 @@ const SearchHistory = ({
 
   return (
     <div className="flex flex-col items-center justify-start">
-      <h3 className="my-2 text-nowrap border-b-4 border-black px-4 text-2xl font-bold drop-shadow-md sm:text-lg md:text-2xl md:tracking-wide lg:text-3xl lg:tracking-wider xl:text-4xl">
+      <h3 className="my-2 text-nowrap border-b-4 border-gray-600 px-4 text-2xl font-bold text-gray-600 drop-shadow-md sm:text-lg md:text-2xl md:tracking-wide lg:text-3xl lg:tracking-wider xl:text-4xl">
         Search History
       </h3>
       <div className="grid w-full grid-flow-row grid-cols-2 gap-3 p-2 sm:flex sm:flex-col">
@@ -40,7 +40,7 @@ const SearchHistory = ({
           >
             <h3
               onClick={() => histoyItemClick(city)}
-              className="text-xl font-bold md:text-2xl lg:text-3xl lg:tracking-wider xl:text-4xl"
+              className="text-xl font-bold text-gray-600 md:text-2xl lg:text-3xl lg:tracking-wider xl:text-4xl"
             >
               {city}
             </h3>

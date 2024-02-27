@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
@@ -34,15 +34,15 @@ const FavoriteContainer = ({ favorites, setSearchTerm, profileId }) => {
     <section className="z-30 flex h-auto w-full items-center justify-center bg-blue-200 p-2 drop-shadow-lg">
       <FaArrowDown
         onClick={() => setIsCollapsed((prevCollapsed) => !prevCollapsed)}
-        className={`absolute right-2 top-2 text-2xl text-black ${isCollapsed ? "rotate-180" : "rotate-0"}`}
+        className={`absolute right-2 top-2 text-2xl text-gray-600 ${isCollapsed ? "rotate-180" : "rotate-0"}`}
       />
       {Auth.loggedIn() ? (
         <>
           {isCollapsed ? (
-            <p className="text-xl font-bold text-black">Your Favorites</p>
+            <p className="text-xl font-bold text-gray-600">Your Favorites</p>
           ) : (
             <div className="flex w-full flex-col text-xl font-bold text-black">
-              <p className="mb-2 text-center text-xl font-bold text-black">
+              <p className="mb-2 text-center text-xl font-bold text-gray-600">
                 Your Favorites
               </p>
               <div className="grid w-full grid-flow-row grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
@@ -55,7 +55,7 @@ const FavoriteContainer = ({ favorites, setSearchTerm, profileId }) => {
                     >
                       <p
                         onClick={() => favoriteClick(favorite)}
-                        className="w-full text-center"
+                        className="w-full text-center text-gray-600"
                       >
                         {favorite}
                       </p>
@@ -76,11 +76,17 @@ const FavoriteContainer = ({ favorites, setSearchTerm, profileId }) => {
         </>
       ) : (
         <span className="flex flex-row items-center justify-center">
-          <Link className="px-3 py-1 text-lg font-bold text-black" to="/login">
+          <Link
+            className="px-3 py-1 text-lg font-bold text-gray-600"
+            to="/login"
+          >
             Login
           </Link>
-          <p className="text-base font-bold text-black">or</p>
-          <Link className="px-3 py-1 text-lg font-bold text-black" to="/signup">
+          <p className="text-base font-bold text-gray-600">or</p>
+          <Link
+            className="px-3 py-1 text-lg font-bold text-gray-600"
+            to="/signup"
+          >
             Signup
           </Link>
         </span>
